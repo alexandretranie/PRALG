@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.4)
+
+# Spécifiez l'architecture cible
+set(CMAKE_OSX_ARCHITECTURES "x86_64")
+
+# Définissez les compilateurs explicitement
+set(CMAKE_C_COMPILER "/usr/bin/gcc")
+set(CMAKE_CXX_COMPILER "/usr/bin/g++")
+
+# Déclarez le projet et le langage
+project(Seance5Heritage LANGUAGES CXX)
+
+set(CMAKE_PREFIX_PATH "/usr/local/opt/qt@5")
+
+find_package(Imagine REQUIRED COMPONENTS Graphics)
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(Seance5Heritage fonctionsclass.cpp fonctionsclass.h main.cpp)
+target_link_libraries(Seance5Heritage Imagine::Graphics)

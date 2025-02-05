@@ -1,0 +1,46 @@
+2.1) 
+
+- On parcourt l'arbre en profondeur. 
+
+3.1) 
+
+- Index hors limites : Pour les fonctions qui accèdent à des éléments via un index (getChild, setChild), il est important de gérer les accès à des index non valides.
+
+- Pointeur nul (nullptr) : Vérifiez toujours si un pointeur est nul avant de l'utiliser, en particulier dans les méthodes qui acceptent des pointeurs comme paramètres (setChild, addAsLastChild).
+
+- Libération incorrecte de la mémoire : Dans le destructeur, assurez-vous que les nœuds ne sont pas partagés par plusieurs parents pour éviter les problèmes de double libération ou de fuite de mémoire.
+
+- Problèmes de mémoire partagée : Si des sous-arbres sont référencés par plusieurs parents, cela peut poser des problèmes lors des suppressions ou des modifications.
+
+- Affichage ou manipulation d'un arbre nul : Si les méthodes sont appelées sur un nœud nul, cela pourrait provoquer des erreurs inattendues.
+
+3.2) 
+
+- getChild(int pos) : Si pos est hors limites, la fonction peut retourner un pointeur nul (nullptr) pour indiquer une erreur. Cela permet à l'appelant de vérifier si l'opération a réussi.
+
+- setChild(int pos, IntTree* newChild) : Cette fonction pourrait retourner un booléen (true pour indiquer que l'opération a réussi, false en cas d'erreur, comme un index hors bornes ou un pointeur newChild nul).
+
+- removeLastChild() : Cette fonction pourrait également retourner un booléen (true si la suppression a réussi, false si la liste des enfants était vide, donc rien à supprimer).
+
+3.3) 
+
+- getChild(int pos) : Plutôt que de retourner un pointeur nul, cette fonction peut lever une exception std::out_of_range si l'index pos est hors limites, ce qui serait utile si l'erreur est jugée critique.
+
+- setChild(int pos, IntTree* newChild) : Si pos est hors limites ou si newChild est nul, lever une exception comme std::invalid_argument pourrait être approprié.
+
+- addAsLastChild(IntTree* newChild) :Si newChild est un pointeur nul, lever une exception std::invalid_argument serait pertinent pour signaler une mauvaise utilisation de l'API.
+
+3.4)
+
+Exceptions : Les exceptions sont plus appropriées lorsque l'erreur est considérée comme critique et que le programme ne devrait pas continuer sans la gérer explicitement. Cela inclut les cas où un pointeur nul est passé à une fonction qui ne devrait pas accepter un tel pointeur, ou lorsque l'accès à un index hors limites pourrait entraîner des comportements indéfinis. Les exceptions forcent le programmeur à traiter ces erreurs via des blocs try-catch, ce qui est souvent préférable pour des erreurs graves.
+
+Valeurs de retour : Les valeurs de retour sont plus adaptées lorsque l'erreur n'est pas critique, et où l'appelant peut simplement ignorer l'erreur ou prendre une autre action. Par exemple, si un nœud n'a pas d'enfants, tenter de supprimer un enfant peut échouer sans nécessiter une gestion complexe via des exceptions.
+
+4.1) 
+
+On a effectué un parcours en profondeur. 
+
+
+4.2)
+
+On a effectué un parcours en largeur. 

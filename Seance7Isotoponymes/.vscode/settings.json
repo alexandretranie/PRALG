@@ -1,0 +1,8 @@
+{
+    "cmake.sourceDirectory": "/Users/alexandretranie/Library/CloudStorage/OneDrive-Personnel/Documents/ENPC 2A/Semestre 1/PRALG/Seance7Isotoponymes/villes",
+    "files.associations": {
+        "set": "cpp",
+        "iostream": "cpp",
+        "vector": "cpp"
+    }
+}

@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Nom du projet
+project(Seance3Templates)
+
+# Définir le standard C++
+set(CMAKE_CXX_STANDARD 11)
+
+# Ajouter le fichier exécutable
+add_executable(main main.cpp eleves.h eleves.cpp)

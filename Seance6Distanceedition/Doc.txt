@@ -1,0 +1,70 @@
+La complexité en **temps** et en **espace** de l'algorithme de calcul de la **distance de Levenshtein** dépend de l'implémentation choisie : récursive simple, récursive avec mémoïsation, ou dynamique.
+
+---
+
+### 1. **Algorithme Récursif Simple**
+
+#### Temps
+- La fonction récursive calcule la distance pour chaque paire de suffixes possibles des chaînes. Cela conduit à une explosion exponentielle du nombre d'appels récursifs.
+- Complexité : **\(O(3^{\max(m, n)})\)**, où \(m\) et \(n\) sont les longueurs des chaînes.
+
+#### Espace
+- L'algorithme utilise un espace proportionnel à la profondeur de la pile d'appels, qui est au plus \(\min(m, n)\).
+- Complexité : **\(O(\min(m, n))\)**.
+
+---
+
+### 2. **Algorithme Récursif avec Mémoïsation**
+
+#### Temps
+- En mémoïsant les résultats intermédiaires, chaque sous-problème \((i, j)\) est résolu une seule fois.
+- Nombre de sous-problèmes : \(O(m \times n)\), chaque sous-problème étant résolu en \(O(1)\) (une recherche de cache + un calcul constant).
+- Complexité : **\(O(m \times n)\)** (polynomiale).
+
+#### Espace
+- Nécessite un cache de taille \(O(m \times n)\) pour mémoriser les distances des sous-problèmes.
+- Complexité : **\(O(m \times n)\)**.
+
+---
+
+### 3. **Programmation Dynamique (Tableau 2D)**
+
+#### Temps
+- Similaire à l'approche mémoïsée, chaque sous-problème est calculé une fois. L'algorithme remplit un tableau \(m \times n\), chaque cellule prenant un temps constant.
+- Complexité : **\(O(m \times n)\)** (polynomiale).
+
+#### Espace
+- Le tableau 2D nécessite \(O(m \times n)\) cases pour stocker les résultats intermédiaires.
+- Complexité : **\(O(m \times n)\)**.
+
+---
+
+### 4. **Programmation Dynamique (Optimisation en Espace)**
+
+En observant que chaque cellule ne dépend que de la ligne précédente (ou de la colonne précédente), on peut réduire l'espace nécessaire.
+
+#### Temps
+- Toujours \(O(m \times n)\), car tous les sous-problèmes sont calculés une seule fois.
+
+#### Espace
+- Au lieu de \(O(m \times n)\), l'espace peut être réduit à \(O(\min(m, n))\) en ne stockant qu'une ligne ou une colonne à la fois.
+- Complexité : **\(O(\min(m, n))\)**.
+
+---
+
+### Résumé des Complexités
+
+| Implémentation                | Temps          | Espace           |
+|-------------------------------|----------------|------------------|
+| **Récursif Simple**           | \(O(3^{\max(m, n)})\) | \(O(\min(m, n))\) |
+| **Récursif avec Mémoïsation** | \(O(m \times n)\)     | \(O(m \times n)\) |
+| **Dynamique (Tableau 2D)**    | \(O(m \times n)\)     | \(O(m \times n)\) |
+| **Dynamique (Optimisé)**      | \(O(m \times n)\)     | \(O(\min(m, n))\) |
+
+---
+
+### Conclusion
+
+- Si \(m\) et \(n\) sont petits ou moyens, l'approche dynamique 2D est simple et efficace.
+- Pour réduire l'espace, préférez l'optimisation dynamique avec une seule ligne ou colonne.
+- La récursivité simple est inefficace à cause de son temps exponentiel.

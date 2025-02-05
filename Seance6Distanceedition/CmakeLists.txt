@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.16) 
+
+# Spécifiez l'architecture cible
+set(CMAKE_OSX_ARCHITECTURES "x86_64")
+
+# Définissez les compilateurs explicitement
+set(CMAKE_C_COMPILER "/usr/bin/gcc")
+set(CMAKE_CXX_COMPILER "/usr/bin/g++")
+
+# Déclarez le projet et le langage
+project(Seance6Distanceedition LANGUAGES CXX)
+
+set(CMAKE_PREFIX_PATH "/usr/local/opt/qt@5")
+
+# Recherchez la bibliothèque Imagine
+find_package(Imagine REQUIRED COMPONENTS Graphics)
+
+# Définir le standard C++
+set(CMAKE_CXX_STANDARD 11)
+
+# Ajoutez l'exécutable
+add_executable(main main.cpp distanceLevenshtein.cpp)
+
